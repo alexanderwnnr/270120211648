@@ -1,0 +1,74 @@
+* {
+   margin: 0;
+   padding: 0; 
+}
+.profileHeader {
+    display: grid;
+    grid-template-rows: 133px;
+    grid-template-columns: 19px 70px 1fr 19px;
+    position: relative;
+
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 20px;
+}
+.photo {
+    position: absolute;
+    left: 20px;
+    top: 8px;
+    width: 124px;
+    height: 124px;
+    background: violet;
+    border-radius: 50%;
+    z-index: 10;
+}
+.profileMessage {
+    position: relative;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    top: 68px;
+    height: 50px;
+    background: #FFFBC8;
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    align-items: center;
+    color: #333333;
+    font-size: 14px;
+    overflow: hidden;
+    
+}
+.profileMessage > p {   
+    position: absolute;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    left: 61px;
+    top: 6px;
+    align-items: center;
+    color: #333333;
+    font-size: 12px;
+}
+.profileName {
+    position: absolute;
+    width: 146px;
+    height: 20px;
+    left: 151px;
+    top: 21px;
+    font-weight: bold;
+    font-size: 16px;
+
+    align-items: center;
+    color: #333333;
+}
+.profession {
+    position: absolute;
+    width: 135px;
+    height: 20px;
+    left: 151px;
+    top: 43px;
+
+    font-size: 12px;
+
+    align-items: center;
+    color: #808080;
+}
