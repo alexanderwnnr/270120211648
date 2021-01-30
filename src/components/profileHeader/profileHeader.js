@@ -9,7 +9,7 @@ const profileHeader = () => {
                 <div className="profileName">Вероника Ростова</div>
                 <div className="profession">Менеджер по продажам</div>
                 <div className="profileMessage">
-                    <p>Подберу для вас самые лучшие предложения.<pre />Мои услуги абсолютно бесплатны.</p>
+                    <p>Подберу для вас самые лучшие предложения.<br />Мои услуги абсолютно бесплатны.</p>
                 </div>
             
         </div>
