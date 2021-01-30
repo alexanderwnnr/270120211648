@@ -4,7 +4,7 @@ import './profileHeader.css'
 const profileHeader = () => {
     return (
         <div className="profileHeader">
-            <div className="photo"></div>
+            <img src="/images/photo.png" className="photo" alt="profile"></img>
             
                 <div className="profileName">Вероника Ростова</div>
                 <div className="profession">Менеджер по продажам</div>

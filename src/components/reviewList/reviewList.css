@@ -2,14 +2,89 @@
     display: grid;
     grid-template-columns: 19px 1fr 19px;
     grid-template-rows: 20px 1fr 191px;
+    margin-top: 20px;
 }
 .listHeader {
+    position: relative;
     grid-row: 1 / 2;
     grid-column: 2 / 3;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 165px 80px 1fr;
+}
+.lastReview {
+    grid-column: 1 / 2;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    
+    display: flex;
+    align-items: center;
+    
+    color: #333333;
+}
+.showAll {
+    grid-column: 2 / 3;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    
+    display: flex;
+    align-items: center;
+    text-decoration-line: underline;
+    
+    color: #005DA1;
+}
+.stat {
+    position: relative;
+    grid-column: 3 / 4;
+}
+.likeIcon {
+    position: absolute;
+    right: 66px;
+    top: 6px;
+}
+.commentIcon {
+    position: absolute;
+    right: 17px;
+    top: 6px;
+}
+.likeNum {
+    position: absolute;
+    width: 21px;
+    height: 15px;
+    right: 43px;
+    top: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    
+
+    color: #333333;
+}
+.commentNum {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: 0px;
+    top: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    
+
+    color: #333333;
 }
 .commentList {
+    display: grid;
+    grid-template-areas: "area";
+    position: relative;
     grid-row: 2 / 3;
     grid-column: 2 / 3;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .leftYourComment {
     display: grid;
@@ -20,12 +95,6 @@
     background: #F2F2F2;
     grid-template-rows: 28px 63px 1fr 43px 34px;
     grid-template-columns: 19px 1fr 19px;
-}
-.comment {
-    height: 100px;
-    background: #F2FBFF;
-    border: 1px solid #C4CBCF;
-    box-sizing: border-box;
 }
 .textField {
     grid-column: 2 / 3;
@@ -63,4 +132,67 @@ button:focus {
 button:hover {
     background: yellowgreen;
     transition: .2s;
+}
+
+.commentContainer {
+    display: grid;
+    grid-template-rows: 30px 8px 1fr;
+    grid-template-columns: 1fr;
+    grid-area: "area";
+    margin-bottom: 15px;
+    font-family: Arial;
+    font-style: normal;
+}
+.userInfo {
+    position: relative;
+    display: flex;
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+    align-items: center;
+}
+.userName {
+    height: 21px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #333333;
+}
+.messageDate {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #808080;
+    margin-left: 10px;
+}
+.userMessage {
+    position: relative;
+    grid-row: 3 / 4;
+    grid-column: 1 / 4;
+    background: #F2FBFF;
+    border: 1px solid #C4CBCF;
+    box-sizing: border-box;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #333333;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(128, 128, 128, 0.1);
+}
+.userMessage::before, .userMessage::after {
+    content: ''; 
+    position: absolute;
+    left: 22px; top: -12px;
+
+    border: 6px solid transparent;
+    border-bottom: 6px solid #C4CBCF;
+    border-left: 6px solid #C4CBCF;
+    
+}
+.userMessage::after {
+    border-bottom: 6px solid #F2FBFF;
+    border-left: 6px solid #F2FBFF;
+    top: -10px;
+    left: 23px;
 }
