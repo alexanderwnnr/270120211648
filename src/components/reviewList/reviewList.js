@@ -16,11 +16,41 @@ const Comment = (props) => {
 
 export default class ReviewList extends Component {
     constructor(props) {
-        super(props)
-            this.state = {
-                count: 0
-            }
+        super(props);
+        this.state = {
+            value: '',
+            comments: [
+                {name: 'Самуил', date: '13 октября 2011', message: 'Привет, Верунь! ниче себе ты крутая. фотка класс!!!!'},
+                {name: 'Лилия Семёновна', date: '14 октября 2011', message: 'Вероника, здравствуйте! Есть такой вопрос: Особый вид куниц жизненно стабилизирует кинетический момент, это и есть всемирно известный центр огранки алмазов и торговли бриллиантами?'},
+                {name: 'Лилия Семёновна', date: '14 октября 2011', message: 'Вероника, здравствуйте! Есть такой вопрос: Особый вид куниц жизненно стабилизирует кинетический момент?'}
+            ]}
+}
+    addItem = (event) => {
+    event.preventDefault()
+    this.setState(state => {
+    
+    const dateRu = new Date().toLocaleString('ru', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }).slice(0, -3)
+    const newArr = [
+        ...state.comments,
+        state.value = {
+            name: 'Аноним', 
+            date: dateRu, 
+            message: this.state.value
         }
+    ]
+        return {
+            comments: newArr,
+            value: ''
+        }}, () => console.log(this.state.comments))
+    }
+      
+    handleChange = (event) => {
+        this.setState({ value: event.target.value })
+    }
 
     render() {
         return (
@@ -35,15 +65,16 @@ export default class ReviewList extends Component {
                     <div className="commentNum">14</div>
                 </div>
             </div>
-            <div className="commentList">
-                <Comment name={"Самуил"} date={"13 октября 2011"} message={"Привет, Верунь! ниче себе ты крутая. фотка класс!!!!"}/>
-                <Comment name={"Лилия Семёновна"} date={"14 октября 2011"} message={"Вероника, здравствуйте! Есть такой вопрос: Особый вид куниц жизненно стабилизирует кинетический момент, это и есть всемирно известный центр огранки алмазов и торговли бриллиантами?"}/>
-                <Comment name={"Лилия Семёновна"} date={"14 октября 2011"} message={"Вероника, здравствуйте! Есть такой вопрос: Особый вид куниц жизненно стабилизирует кинетический момент?"}/>    
+            <div className="commentList">   
+                    {this.state.comments.map((item, index) => (
+                        <Comment key={index} name={item.name} date={item.date} message={item.message}></Comment>
+                    ))}
             </div>
-            <div className="leftYourComment">
-                <textarea className="textField"></textarea>
-                <button>Написать консультанту</button>
-            </div>
+            <form id="form" className="leftYourComment" onSubmit={this.addItem}>
+                
+                    <textarea form="form" value={this.state.value} onChange={this.handleChange} className="textField"></textarea>
+                    <button>Написать консультанту</button>
+            </form>         
         </div>
         );
     }
