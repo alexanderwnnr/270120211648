@@ -24,9 +24,21 @@ export default class ReviewList extends Component {
                 {name: 'Лилия Семёновна', date: '14 октября 2011', message: 'Вероника, здравствуйте! Есть такой вопрос: Особый вид куниц жизненно стабилизирует кинетический момент, это и есть всемирно известный центр огранки алмазов и торговли бриллиантами?'},
                 {name: 'Лилия Семёновна', date: '14 октября 2011', message: 'Вероника, здравствуйте! Есть такой вопрос: Особый вид куниц жизненно стабилизирует кинетический момент?'}
             ]}
+            
 }
+    handleKeyPress = (event) => {
+    if(event.ctrlKey && event.key === 'Enter'){
+        event.preventDefault()
+        this.addItem()
+    }
+}
+
     addItem = (event) => {
-    event.preventDefault()
+    if(event) event.preventDefault()
+
+    // attribute required for textarea doesnt work correct
+    if(!/\S/.test(this.state.value)) return
+    
     this.setState(state => {
     
     const dateRu = new Date().toLocaleString('ru', {
@@ -51,8 +63,10 @@ export default class ReviewList extends Component {
     handleChange = (event) => {
         this.setState({ value: event.target.value })
     }
+    
 
     render() {
+        
         return (
         <div className="reviewList">
             <div className="listHeader">
@@ -70,10 +84,9 @@ export default class ReviewList extends Component {
                         <Comment key={index} name={item.name} date={item.date} message={item.message}></Comment>
                     ))}
             </div>
-            <form id="form" className="leftYourComment" onSubmit={this.addItem}>
-                
-                    <textarea form="form" value={this.state.value} onChange={this.handleChange} className="textField"></textarea>
-                    <button>Написать консультанту</button>
+            <form id="form" className="leftYourComment" onKeyPress={this.handleKeyPress.bind(this)} onSubmit={this.addItem.bind(this)} >               
+                <textarea form="form" value={this.state.value} onChange={this.handleChange} className="textField" required={true}></textarea>
+                <button>Написать консультанту</button>
             </form>         
         </div>
         );
